@@ -25,6 +25,11 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     font-size: 100%;
   }
+
+  :root {
+    --bg-primary: lightgrey;
+    --bg-secondary: white;
+  }
 `
 
 export default GlobalStyles
