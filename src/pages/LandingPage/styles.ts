@@ -145,7 +145,7 @@ export const RelatedLinkItem = styled.li`
 `
 
 export const RelatedLink = styled.a`
-  text-decoration: none;
+  text-decoration: underline;
   color: var(--secondary);
   font-size: 1rem;
 
@@ -153,6 +153,10 @@ export const RelatedLink = styled.a`
 
   :hover {
     text-decoration: underline;
+  }
+
+  @media ${device.desktop} {
+    text-decoration: none;
   }
 `
 
