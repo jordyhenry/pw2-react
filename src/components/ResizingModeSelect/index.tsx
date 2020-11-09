@@ -11,9 +11,9 @@ import {
 import ResizignModesData from '../../utils/ResizingModesData'
 
 const ResizingModeSelect: React.FC<ResizingModeSelectProps> = ( { resizingMode, onChange } ) => {
-  const handleSelectChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>): void => {
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     if (event.target.value !== undefined)
-      onChange(event.target.value as number)
+      onChange(Number(event.target.value))
   } 
 
   return (

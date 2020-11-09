@@ -238,14 +238,15 @@ const LandingPageContainer: React.FC = () => {
           originalFileBuffer: item.originalFileBuffer,
         }
 
-        if (updatedItem.originalFileBuffer)
-          resizeFileAndGenerateBlob(updatedItem.originalFileBuffer, updatedItem.name)
-        
+        if (item.originalFileBuffer)
+          resizeFileAndGenerateBlob(item.originalFileBuffer, item.name)
+
         return updatedItem
       })
 
       return updatedItems
     })
+  // eslint-disable-next-line
   }, [resizingMode])
 
   return (
