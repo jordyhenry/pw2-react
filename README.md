@@ -5,7 +5,7 @@ A React Application that easilly allow you to re-scale your images to the right 
 This application was developed as an usage example of [⚡PW²](https://www.npmjs.com/package/pw2) library.
 
 
-You can check it live, and use it [right here](https://github.com/jordyhenry/pw2-react)
+You can check it live, and use it [right here](https://pw2-react.vercel.app/)
 
 ## Motivation
 

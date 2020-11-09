@@ -1,10 +1,3 @@
-/*
-  TODO
-    - write README
-    - update some sample images
-    - deploy
-*/
-
 import React from 'react';
 import GlobalStyles from './GlobalStyles'
 import LandingPageContainer from './pages/LandingPage'
