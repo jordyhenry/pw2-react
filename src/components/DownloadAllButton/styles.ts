@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../GlobalStyles'
 
 export const DownloadButton = styled.button`
   display: flex;
@@ -6,7 +7,7 @@ export const DownloadButton = styled.button`
   justify-content: center;
   
   margin-top: 3rem;
-  width: 40%;
+  width: 80%;
   height: 3rem;
 
   padding: 0.45rem;
@@ -32,6 +33,10 @@ export const DownloadButton = styled.button`
     background-color: #cccccc;
     color: #666666;
     cursor: default;
+  }
+
+  @media ${device.desktop} {
+    width: 40%;
   }
 `;
 

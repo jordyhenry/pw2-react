@@ -1,9 +1,15 @@
-import { Button } from '@material-ui/core';
 import styled from 'styled-components';
+import { device } from '../../GlobalStyles'
 
 export const Header = styled.div`
   padding: 2rem 0;
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
+
+  @media ${device.desktop} {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -59,16 +65,27 @@ export const GeneralInfo = styled.p`
 
 export const Footer = styled.footer`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 1.6rem 0;
+
+  @media ${device.desktop} {
+    flex-direction: row;
+  }
 `
 
 export const FooterInfo = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: initial;
+  align-items: center;
   justify-content: space-around;
+  padding-bottom: 1rem;
+  
+  @media ${device.desktop} {
+    align-items: initial;
+    padding-bottom: 0;
+  }
 `
 
 export const Pw2Name = styled.span`
@@ -77,8 +94,50 @@ export const Pw2Name = styled.span`
   margin-bottom: 1rem;
 `
 
+export const MadeBy = styled.a`
+  padding-bottom: .75rem;
+  text-decoration: underline;
+  color: var(--secondary);
+  font-size: 1rem;
+
+  transition: 0.15s ease-in-out;
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  @media ${device.desktop} {
+    padding-bottom: .5rem;
+    text-decoration: none;
+  }
+`
+
+export const License = styled.a`
+  text-decoration: underline;
+  color: var(--secondary);
+  font-size: 1rem;
+
+  transition: 0.15s ease-in-out;
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  @media ${device.desktop} {
+    text-decoration: none;
+  }
+`
+
+
 export const RelatedLinksList = styled.ul`
   list-style: none;
+  text-align: center;
+  padding-top: 1rem;
+
+  @media ${device.desktop} {
+    text-align: left;
+    padding-top: 0;
+  }
 `
 
 export const RelatedLinkItem = styled.li`
@@ -97,28 +156,5 @@ export const RelatedLink = styled.a`
   }
 `
 
-export const MadeBy = styled.a`
-  padding-bottom: .25rem;
-  text-decoration: none;
-  color: var(--secondary);
-  font-size: 1rem;
 
-  transition: 0.15s ease-in-out;
-
-  :hover {
-    text-decoration: underline;
-  }
-`
-
-export const License = styled.a`
-  text-decoration: none;
-  color: var(--secondary);
-  font-size: 1rem;
-
-  transition: 0.15s ease-in-out;
-
-  :hover {
-    text-decoration: underline;
-  }
-`
 

@@ -1,11 +1,7 @@
 /*
   TODO
-    - mobile css
-      - scale down description in <Header />
-      - change flex-direction of <ResizedItems />
-      - increase the <DownloadAllButton /> width
-      - center tex in <Footer /> and change flex-direction
     - write README
+    - update some sample images
     - deploy
 */
 
