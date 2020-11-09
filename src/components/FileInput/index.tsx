@@ -1,25 +1,42 @@
 import React from 'react';
-import Dropzone from 'react-dropzone'
+import { useDropzone } from 'react-dropzone'
+import UploadConfig from '../../utils/UploadConfiguration'
+
+import CloudUpload from '@material-ui/icons/CloudUpload'
+
+import {
+  Container,
+  DragAndDropContainer,
+  DragAndDropCallToAction,
+} from './styles'
 
 const FileInput: React.FC<FileInputProps> = ({onDropFiles}) => {
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject
+  } = useDropzone({
+    accept: UploadConfig.acceptedFiles,
+    maxFiles: UploadConfig.maxFiles,
+    maxSize: UploadConfig.maxFileSize,
+    multiple: true,
+    onDrop: onDropFiles,
+  });
+
   return (
-    <>
-      <label htmlFor="filesToResize">Files To Resize</label>
-      <Dropzone
-        maxFiles={10}
-        maxSize={1e7}
-        multiple
-        accept='image/png, image/jpeg, image/jpg'
-        onDrop={onDropFiles}
-      >
-        {({getRootProps, getInputProps}) => (
-          <div {...getRootProps()}>
-            <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
-          </div>
-        )}
-      </Dropzone>
-    </>
+    <Container>
+      <DragAndDropContainer {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
+        <input {...getInputProps()} />
+
+        <CloudUpload fontSize='large' />
+
+        <DragAndDropCallToAction>
+          Click or drag files to upload
+        </DragAndDropCallToAction>
+      </DragAndDropContainer>
+    </Container>
   );
 }
 

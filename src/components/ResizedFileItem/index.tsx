@@ -1,6 +1,14 @@
 import React from 'react';
-
-// import { Container } from './styles';
+import { 
+  Container,
+  FileInfo,
+  FileIcon,
+  FileName,
+  FileActions,
+  DownloadFileButton,
+  LoadingMessage,
+  RemoveItemButton,
+} from './styles';
 
 const ResizedFileItem: React.FC<ResizedFileItemProps> = ({
   itemName,
@@ -9,11 +17,20 @@ const ResizedFileItem: React.FC<ResizedFileItemProps> = ({
   onRemove,
 }) => {
   return (
-    <>
-      <h2>{itemName}</h2>
-      { (hasBlob) ? <button onClick={() => onDownload(itemName)}>Download</button> : <p>Carregando...</p> }
-      <button onClick={() => onRemove(itemName)}>Remove</button>
-    </>
+    <Container>
+      <FileInfo>
+        <FileIcon />
+        <FileName>{itemName}</FileName>
+      </FileInfo>
+
+      <FileActions>
+        { (hasBlob) 
+            ? <DownloadFileButton onClick={() => onDownload(itemName)}>Download</DownloadFileButton> 
+            : <LoadingMessage>Resizing ...</LoadingMessage> 
+        }
+        <RemoveItemButton onClick={() => onRemove(itemName)}>Remove</RemoveItemButton>
+      </FileActions>
+    </Container>
   );
 }
 

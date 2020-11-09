@@ -1,9 +1,10 @@
 import React from 'react';
-import { Container} from '@material-ui/core'
 import ResizingModeSelect from '../../components/ResizingModeSelect'
 import FileInput from '../../components/FileInput'
 import ResizedFileItem from '../../components/ResizedFileItem'
 import DownloadAllButton from '../../components/DownloadAllButton'
+import Stripe from '../../components/Stripe'
+import RelatedLinks from '../../utils/RelatedLinks'
 
 import {
   Header,
@@ -11,14 +12,17 @@ import {
   Headline,
   InputForm,
   ResizedFilesContainer,
+  ResizedFilesListTitle,
   ResizedFilesList,
   ResizedFilesListItem,
   GeneralInfoContainer,
   GeneralInfoHeader,
   GeneralInfo,
   Footer,
+  FooterInfo,
   Pw2Name,
   RelatedLinksList,
+  RelatedLinkItem,
   RelatedLink,
   MadeBy,
   License,
@@ -40,82 +44,97 @@ const LandingPage: React.FC<LandingPageProps> = ({
   onDownloadAll,
 }) => {
   return (
-    <Container maxWidth='sm'>
-      <Header>
-        <Title>⚡ PW²</Title>
-        <Headline>An easy tool to re-scale your images for the right power of two dimensions.</Headline>
-      </Header>
+    <>
+      <Stripe primary>
+        <Header>
+          <Title>⚡ PW²</Title>
+          <Headline>An easy tool to re-scale your images to the right power of two dimensions.</Headline>
+        </Header>
+      </Stripe>
 
-      <InputForm>
-        <ResizingModeSelect 
-          resizingMode={resizingMode}
-          onChange={onResizingModeChange}
-        />
-        <FileInput onDropFiles={onNewFilesUpload}/>
-      </InputForm>
+      <Stripe>
+        <InputForm>
+          <ResizingModeSelect 
+            resizingMode={resizingMode}
+            onChange={onResizingModeChange}
+          />
+          <FileInput onDropFiles={onNewFilesUpload}/>
+        </InputForm>
+      </Stripe>
 
-      <ResizedFilesContainer>
-        <ResizedFilesList>
-          { resizedItems.map(resizedItem => (
-              <ResizedFilesListItem key={resizedItem.name}>
-                <ResizedFileItem 
-                  itemName={resizedItem.name}
-                  hasBlob={(resizedItem.resizedFileBlob) ? true : false}
-                  onDownload={onDownloadItem}
-                  onRemove={onRemoveItem}
-                />
-              </ResizedFilesListItem>
-            )
-          )}
-        </ResizedFilesList>
-        
-        <DownloadAllButton
-          hasOneOrLessFiles={resizedItems.length <= 1}
-          isPackingFiles={isPackingFiles}
-          onClick={onDownloadAll}
-        >
-          Download All
-        </DownloadAllButton>
-      </ResizedFilesContainer>
-
-      <GeneralInfoContainer>
-        <GeneralInfoHeader>
-          Motivation
-        </GeneralInfoHeader>
-        
-        <GeneralInfo>
-          Games and real-time applications, in general, tend to prefer images and textures with power-of-two dimensions, they make it easier to generate eventual mipmaps, consume less GPU memory, and increase the overall performance.
+      <Stripe primary>
+        <ResizedFilesContainer>
+          <ResizedFilesListTitle>RESIZED FILES</ResizedFilesListTitle>
+          <ResizedFilesList>
+            { resizedItems.map(resizedItem => (
+                <ResizedFilesListItem key={resizedItem.name}>
+                  <ResizedFileItem 
+                    itemName={resizedItem.name}
+                    hasBlob={(resizedItem.resizedFileBlob) ? true : false}
+                    onDownload={onDownloadItem}
+                    onRemove={onRemoveItem}
+                  />
+                </ResizedFilesListItem>
+              )
+            )}
+          </ResizedFilesList>
           
-          But it's time-consuming to find the right power-of-two dimensions for that 1200x612 texture and resize it yourself, that's where pw² comes in handy.
+          <DownloadAllButton
+            hasOneOrLessFiles={resizedItems.length <= 1}
+            isPackingFiles={isPackingFiles}
+            onClick={onDownloadAll}
+          >
+            Download All
+          </DownloadAllButton>
+        </ResizedFilesContainer>
+      </Stripe>
+      
+      <Stripe>
+        <GeneralInfoContainer>
+          <GeneralInfoHeader>
+            MOTIVATION
+          </GeneralInfoHeader>
+          
+          <GeneralInfo>
+            Games and real-time applications, in general, tend to prefer images and textures with power-of-two dimensions, they make it easier to generate eventual mipmaps, consume less GPU memory, and increase the overall performance.
+            <br />
+            But it's time-consuming to find the right power-of-two dimensions for that 1200x612 texture and resize it yourself, that's where ⚡PW² comes in handy.
+            <br /><br />
+            ⚡ PW² uses <a href='https://github.com/oliver-moran/jimp' rel='noreferrer' target='_blank'>Jimp</a> to get your texture current dimensions and rescaled it to the right power-of-two dimensions automatically.
+            <br /><br />
+            This project was done for the cs50 Final Project assignment.
+          </GeneralInfo>
+        </GeneralInfoContainer>
+      </Stripe>
+ 
+      <Stripe primary>
+        <Footer>
+            <FooterInfo>
+              <Pw2Name>
+                ⚡ PW²
+              </Pw2Name>
 
-          pw² uses Jimp to get your texture current dimensions and rescaled it to the right power-of-two dimensions automatically.
+              <MadeBy rel='noreferrer' target='_blank' href='https://github.com/jordyhenry'>
+                Made By: Jordy Henry
+              </MadeBy>
 
-          This project was done for the cs50 Final Project assignment.
-        </GeneralInfo>
-      </GeneralInfoContainer>
+              <License rel='noreferrer' target='_blank' href='https://opensource.org/licenses/MIT'>
+                License: MIT
+              </License>
+            </FooterInfo>
 
-      <Footer>
-        <Pw2Name>
-          ⚡ PW²
-        </Pw2Name>
-
-        <RelatedLinksList>
-          { ['npm page', 'github page', 'pw2-cli'].map(item => (
-            <RelatedLink key={item}>
-              {item}
-            </RelatedLink>
-          )) }
-        </RelatedLinksList>
-
-        <MadeBy>
-          Made By: Jordy Henry
-        </MadeBy>
-
-        <License>
-          License: MIT
-        </License>
-      </Footer>
-    </Container>
+            <RelatedLinksList>
+              { RelatedLinks.map(link => (
+                <RelatedLinkItem key={link.label}>
+                  <RelatedLink rel='noreferrer' target='_blank' href={link.url}>
+                    {link.label}
+                  </RelatedLink>
+                </RelatedLinkItem>
+              )) }
+            </RelatedLinksList>
+        </Footer>
+      </Stripe>
+    </>
   );
 }
 

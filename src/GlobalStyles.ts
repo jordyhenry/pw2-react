@@ -9,26 +9,32 @@ export const device = {
 };
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap');
-
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-    font-family: 'Work Sans', sans-serif;
-    font-weight: normal;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
   }
 
   body {
-    background-color: #F4F8FA;
+    background-color: var(--secondary);
     -webkit-font-smoothing: antialiased;
     font-size: 100%;
+    overflow-x: hidden;
   }
 
   :root {
-    --bg-primary: lightgrey;
-    --bg-secondary: white;
+    --primary: #223843;
+    --secondary: #EFF1F3;
+    --tertiary: #C1292E;
+    --quaternary: #F1D302;
+    --quinary: #FEC601;
+    --senary: #3FA34D;
+
+    --bg-primary: var(--primary);
+    --bg-secondary: var(--secondary);
   }
 `
 

@@ -1,9 +1,12 @@
 import React from 'react';
+
 import {
-  InputLabel,
-  Select,
-  MenuItem,
-} from '@material-ui/core'
+  Container,
+  Label,
+  ResizingSelect,
+  ResizingSelectOption,
+  ResizingModeDescription,
+} from './styles'
 
 import ResizignModesData from '../../utils/ResizingModesData'
 
@@ -14,29 +17,26 @@ const ResizingModeSelect: React.FC<ResizingModeSelectProps> = ( { resizingMode, 
   } 
 
   return (
-    <>
-      <InputLabel id="resizingModes">Resizing Mode</InputLabel>
-      <Select 
-        labelId="resizingModes" 
+    <Container>
+      <Label htmlFor="resizingModes">RESIZING MODE</Label>
+      <ResizingSelect
         id="resizingModes" 
-        autoWidth={false} 
-        labelWidth={200}
         value={resizingMode}
         onChange={handleSelectChange}
       >
         {
           ResizignModesData.map(({resizingMode, label}) => (
-            <MenuItem key={resizingMode} value={resizingMode} >
+            <ResizingSelectOption key={resizingMode} value={resizingMode} >
               {label.toLocaleUpperCase()}
-            </MenuItem>
+            </ResizingSelectOption>
           ))
         }
-      </Select>
+      </ResizingSelect>
 
-      <p>
+      <ResizingModeDescription>
         {ResizignModesData[resizingMode].description}
-      </p>
-    </>
+      </ResizingModeDescription>
+    </Container>
   );
 }
 

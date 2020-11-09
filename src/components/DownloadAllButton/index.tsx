@@ -1,6 +1,11 @@
 import React from 'react';
-import { Button, CircularProgress } from '@material-ui/core'
+import { CircularProgress } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
+
+import { 
+  DownloadButton,
+  DownloadButtonText,
+} from './styles'
 
 const DownloadAllButton: React.FC<DownloadAllButtonProps> = ({
   isPackingFiles,
@@ -8,16 +13,16 @@ const DownloadAllButton: React.FC<DownloadAllButtonProps> = ({
   onClick,
 }) => {
   return (
-    <Button
-      variant="contained"
-      color="primary"
-      size="large"
+    <DownloadButton
       disabled={isPackingFiles || hasOneOrLessFiles}
-      startIcon={isPackingFiles ? <CircularProgress size={24}/> : <SaveIcon /> }
       onClick={onClick}
     >
-      Download All
-    </Button>
+      {isPackingFiles ? <CircularProgress size={24}/> : <SaveIcon/> }
+
+      <DownloadButtonText>
+        DOWNLOAD ALL
+      </DownloadButtonText>
+    </DownloadButton>
   );
 }
 
