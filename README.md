@@ -23,3 +23,10 @@ This project was done for the cs50 Final Project assignment.
 ## License
 
 [MIT](https://github.com/jordyhenry/pw2-react/blob/master/LICENSE)
+
+## TODO
+- Update pw2 and refactor for compatibility
+- Remove Buffer casting on LandingPage readFile function on [./src/pages/LandingPage/index.ts](https://github.com/jordyhenry/pw2-react/blob/master/src/pages/LandingPage/index.tsx#L187) (this item depends directly from the pw2 update)
+- Add [pw2-cli](https://www.npmjs.com/package/pw2-cli) link to [./src/utils/RelatedLinks.ts](https://github.com/jordyhenry/pw2-react/blob/master/src/utils/RelatedLinks.ts)
+- Add snack message for rejected files due to limitations on [./src/utils/UploadConfiguration.ts](https://github.com/jordyhenry/pw2-react/blob/master/src/utils/UploadConfiguration.ts)
+- Fix any English misspells (sorry guys, it's not my mother language  🤷‍♂️ )
